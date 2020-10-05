@@ -1,0 +1,37 @@
+apiVersion: core.syntixi.dev/v1
+kind: Function
+metadata:
+  name: hello
+  namespace: default
+spec:
+  specializationTimeout: 120
+  environment:
+    name: python-27
+    namespace: default
+  bundle:
+    name: hello-bundle
+    entry: hello.main
+
+---
+apiVersion: core.syntixi.dev/v1
+kind: Bundle
+metadata:
+  name: hello-bundle
+  namespace: default
+spec:
+  source:
+    buildCmd: "./build.sh"
+    buildEnvironment:
+      name: python-27
+      namespace: default
+    url: archive://hello-archive
+status:
+  buildstatus: pending
+
+---
+kind: ArchiveUploadSpec
+name: hello-archive
+include:
+  - "hello/*.py"
+  - "hello/*.sh"
+  - "hello/requirements.txt"

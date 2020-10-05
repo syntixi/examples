@@ -1,0 +1,36 @@
+kind: ArchiveUploadSpec
+name: hello-go
+include:
+- hello.go
+
+---
+apiVersion: core.syntixi.dev/v1
+kind: Bundle
+metadata:
+  creationTimestamp: null
+  name: hello-go-pkg
+  namespace: default
+spec:
+  source:
+    buildEnvironment:
+      name: go
+    type: url
+    url: archive://hello-go
+status:
+  buildstatus: pending
+
+---
+apiVersion: core.syntixi.dev/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: hello-go
+  namespace: default
+spec:
+  environment:
+    name: go
+    namespace: default
+  functionTimeout: 60
+  bundle:
+    entry: Handler
+    name: hello-go-pkg

@@ -1,0 +1,23 @@
+apiVersion: core.syntixi.dev/v1
+kind: Environment
+metadata:
+  creationTimestamp: null
+  name: python
+  namespace: default
+spec:
+  builder:
+    buildCommand: build
+    image: syntixi/python-builder
+    podspec:
+      nodeSelector:
+        machinecap: high
+      tolerations:
+      - key: "env"
+        value: "prod"
+        operator: "Equal"
+        effect: "NoSchedule"
+  keeparchive: false
+  runtime:
+    image: syntixi/python-env
+  terminationGracePeriod: 360
+  version: 2

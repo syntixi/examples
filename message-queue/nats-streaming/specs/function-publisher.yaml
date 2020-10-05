@@ -1,0 +1,15 @@
+apiVersion: core.syntixi.dev/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: publisher
+  namespace: default
+spec:
+  specializationTimeout: 120
+  environment:
+    name: go
+    namespace: default
+  functionTimeout: 60
+  bundle:
+    entry: Handler
+    name: publisher

@@ -1,0 +1,21 @@
+include:
+- mqtrigger/*
+kind: ArchiveUploadSpec
+name: mqtrigger-Z3l6
+
+---
+apiVersion: core.syntixi.dev/v1
+kind: Bundle
+metadata:
+  creationTimestamp: null
+  name: publisher
+  namespace: default
+spec:
+  source:
+    buildEnvironment:
+      name: go
+    type: url
+    url: archive://mqtrigger-Z3l6
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2019-12-19T17:18:45.81397Z"

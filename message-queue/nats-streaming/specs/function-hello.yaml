@@ -1,0 +1,38 @@
+include:
+- hello.go
+kind: ArchiveUploadSpec
+name: hello-go-zqZW
+
+---
+apiVersion: core.syntixi.dev/v1
+kind: Bundle
+metadata:
+  creationTimestamp: null
+  name: hello-98476132-84ff-4e74-8b0f-2d1005871d1c
+  namespace: default
+spec:
+  source:
+    buildEnvironment:
+      name: go
+    type: url
+    url: archive://hello-go-zqZW
+status:
+  buildstatus: pending
+  lastUpdateTimestamp: "2019-12-19T17:31:23.43918Z"
+
+---
+apiVersion: core.syntixi.dev/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: hello
+  namespace: default
+spec:
+  specializationTimeout: 120
+  environment:
+    name: go
+    namespace: default
+  functionTimeout: 60
+  bundle:
+    entry: Handler
+    name: hello-98476132-84ff-4e74-8b0f-2d1005871d1c
