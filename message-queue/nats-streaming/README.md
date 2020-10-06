@@ -4,7 +4,7 @@
 
 ```bash
 $ syntixi spec init
-$ syntixi env create --name go --image syntixi/go-env-1.14 --builder syntixi/go-builder-1.14 --period 5 --spec
+$ syntixi env create --name go --image syntixi/go-env-1.14 --builder syntixi/go-builder-1.14 --graceperiod 5 --spec
 $ syntixi bundle create --name publisher-pkg --src mqtrigger/* --spec
 $ syntixi fn create --name publisher --env go --bundle publisher-pkg --entrypoint "Handler" --spec
 $ syntixi bundle create --name hello-bundle --env go --src https://raw.githubusercontent.com/syntixi/examples/master/environments/go/hello.go --spec
