@@ -10,12 +10,9 @@ then
     exit 1
 fi
 
-# Create python env if it doesn't exist
-syntixi env get --name python || syntixi env create --name python --image syntixi/python-env
-
 # Register functions and routes with syntixi
 syntixi bundle create --name guestbook-get-pkg --code get.py
-syntixi function create --name guestbook-get --env python --bundle guestbook-get-pkg --url /guestbook --method GET
+syntixi function create --name guestbook-get --image syntixi/python-env --bundle guestbook-get-pkg --url /guestbook --method GET
 
 syntixi bundle create --name guestbook-add-pkg --code add.py
-syntixi function create --name guestbook-add --env python --bundle guestbook-add-pkg --url /guestbook --method POST
+syntixi function create --name guestbook-add --image syntixi/python-env --bundle guestbook-add-pkg --url /guestbook --method POST
