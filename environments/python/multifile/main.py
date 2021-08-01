@@ -3,7 +3,7 @@ import readfile
 import os
 
 HOST_ADDRESS = "0.0.0.0"
-HOST_PORT = 8888
+HOST_PORT = 80
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
