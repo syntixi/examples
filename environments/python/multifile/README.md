@@ -50,7 +50,7 @@ zip -jr multifile.zip *.py *.txt
 ### Update the function
 
 ```
-syntixi bundle update --name multifile-pkg --deploy multifile.zip
+syntixi bundle update --name multifile-pkg --archive multifile.zip
 syntixi function update --name multifile --bundle multifile-pkg
 ```
 
